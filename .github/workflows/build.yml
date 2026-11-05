@@ -20,25 +20,11 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Generate Gradle Wrapper
+    - name: Download and Setup Gradle Wrapper 8.5
       run: |
-        mvn -version || true
-        gradle --version || true
-        # Doğrudan sistemdeki Gradle yerine uygun sürümle wrapper üretelim
-        npx --yes @antv/g 2>/dev/null || true
-        # Gradle 8.5 wrapper dosyalarını doğrudan repo kökünden oluşturalım
-        python3 -c "
-        import urllib.request, zipfile, io, os
-        url = 'https://services.gradle.org/distributions/gradle-8.5-bin.zip'
-        print('Downloading Gradle 8.5...')
-        resp = urllib.request.urlopen(url)
-        with zipfile.ZipFile(io.BytesIO(resp.read())) as z:
-            z.extractall('.')
-        os.system('./gradle-8.5/bin/gradle wrapper --gradle-version 8.5')
-        "
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+        curl -L https://services.gradle.org/distributions/gradle-8.5-bin.zip -o gradle-8.5.zip
+        unzip -q gradle-8.5.zip
+        ./gradle-8.5/bin/gradle wrapper --gradle-version 8.5
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon
