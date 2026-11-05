@@ -5,103 +5,121 @@
     android:orientation="vertical"
     android:background="#121212">
 
-    <!-- Üst Başlık ve Hızlı Yenileme Barı -->
-    <RelativeLayout
+    <!-- Üst Kısayol Barı: Trendyol, Yemeksepeti ve Kritik "🚀 SİPARİŞİ AL" Bot Butonu -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#1E1E2E"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
 
-        <TextView
-            android:id="@+id/txtTitle"
+        <Button
+            android:id="@+id/btnTrendyol"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="POPPY POS - Canlı Siparişler"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#F27A1A"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="TY Panel"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnYemeksepeti"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#EA004B"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="YS Panel"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnGrabOrder"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#F59E0B"
+            android:text="🚀 SİPARİŞİ AL (AKTAR)"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnRefresh"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
             android:backgroundTint="#334155"
-            android:padding="4dp"
-            android:text="Yenile"
-            android:textAllCaps="false"
+            android:padding="0dp"
+            android:text="↻"
             android:textColor="#FFFFFF"
-            android:textSize="12sp" />
-    </RelativeLayout>
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-    <!-- Orta Alan: Sadece İlgili Modülü Gösteren Mobil Uyumlu WebView -->
+    <!-- Orta Alan: Mobil POS WebView -->
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Kritik Özel Buton: SİPARİŞ AL (Sık Kullanılanlar) -->
-    <Button
-        android:id="@+id/btnQuickOrder"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="8dp"
-        android:backgroundTint="#E11D48"
-        android:text="★ HIZLI SİPARİŞ AL (SIK KULLANILANLAR) ★"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <!-- Alt Özel Operasyon Menüsü: Canlı Sipariş, Masa Aç, Tahsilat -->
+    <!-- Alt Menü: Adisyon (Masa Aç), Tahsilat Al, Canlı Siparişler -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="54dp"
         android:background="#1E1E2E"
         android:orientation="horizontal"
         android:padding="4dp"
         android:weightSum="3">
 
         <Button
-            android:id="@+id/btnLiveOrders"
+            android:id="@+id/btnTabAdisyon"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="4dp"
-            android:layout_weight="1"
-            android:backgroundTint="#0284C7"
-            android:text="Canlı Sipariş"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="13sp" />
-
-        <Button
-            android:id="@+id/btnTables"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:backgroundTint="#16A34A"
-            android:text="Masa Aç"
+            android:text="Adisyon (Masa)"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="13sp" />
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnPayment"
+            android:id="@+id/btnTabTahsilat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:backgroundTint="#D97706"
             android:text="Tahsilat Al"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="13sp" />
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnTabCanli"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#0284C7"
+            android:text="Canlı Sipariş"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>
