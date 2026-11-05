@@ -21,9 +21,17 @@ public class MainActivity extends AppCompatActivity {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webSettings.setDomStorageEnabled(true);
+            
+            // Ekrana sığdırma ve taşmayı önleme ayarları
+            webSettings.setUseWideViewPort(true);
+            webSettings.setLoadWithOverviewMode(true);
+            webSettings.setSupportZoom(true);
+            webSettings.setBuiltInZoomControls(true);
+            webSettings.setDisplayZoomControls(false);
+
             webView.setWebViewClient(new WebViewClient());
             
-            // Poppy POS panel adresin
+            // Sadece ilgili modüle veya sayfaya yönlendirebiliriz
             webView.loadUrl("https://panel.poppyapartments.com");
         }
     }
